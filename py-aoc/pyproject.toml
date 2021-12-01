@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "py-aoc"
+version = "0.1.0"
+description = ""
+authors = ["Justin Wood <Callek@gmail.com>"]
+
+[tool.poetry.scripts]
+aoc = "py_aoc.main:main"
+aoc-1 = "py_aoc.day1:main"
+#aoc-2 = "py_aoc.day2:main"
+#aoc-3 = "py_aoc.day3:main"
+#aoc-4 = "py_aoc.day4:main"
+#aoc-5 = "py_aoc.day5:main"
+#aoc-6 = "py_aoc.day6:main"
+#aoc-7 = "py_aoc.day7:main"
+#aoc-8 = "py_aoc.day8:main"
+#aoc-9 = "py_aoc.day9:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.12.1"
+black = { git = "https://github.com/psf/black.git", branch = "main" }
+mypy = "^0.910"
+pytest = "^6.2.5"
+tox = "^3.24.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
