@@ -28,9 +28,24 @@ def part1(depths: List[int]) -> int:
     return count
 
 
+def part2(depths: List[int]) -> int:
+    min_slice = 0
+    max_slice = 3
+    count = 0
+    while max_slice <= len(depths):
+        previous_depths = depths[min_slice:max_slice]
+        current_depths = depths[min_slice + 1 : max_slice + 1]
+        if sum(current_depths) > sum(previous_depths):
+            count += 1
+        min_slice += 1
+        max_slice += 1
+    return count
+
+
 def main() -> None:
     """Main Logic"""
     with open(inputfile) as infile:
         depths = get_data_depths(infile.read())
 
     print("Part1: ", part1(depths))
+    print("Part2: ", part2(depths))

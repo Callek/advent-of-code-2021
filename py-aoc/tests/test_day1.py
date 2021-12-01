@@ -23,3 +23,9 @@ def test_num_increasing() -> None:
     depths = day1.get_data_depths(EXAMPLE_DATA)
 
     assert day1.part1(depths) == 7
+
+
+def test_sliding_window() -> None:
+    depths = day1.get_data_depths(EXAMPLE_DATA)
+
+    assert day1.part2(depths) == 5
