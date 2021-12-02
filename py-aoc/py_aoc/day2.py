@@ -32,9 +32,26 @@ def part1(commands: List[Tuple[str, int]]) -> int:
     return horizontal * vertical
 
 
+def part2(commands: List[Tuple[str, int]]) -> int:
+    """part1"""
+    horizontal = 0
+    vertical = 0
+    aim = 0
+    for cmd in commands:
+        if cmd[0] == "forward":
+            horizontal += cmd[1]
+            vertical += cmd[1] * aim
+        if cmd[0] == "up":
+            aim -= cmd[1]
+        if cmd[0] == "down":
+            aim += cmd[1]
+    return horizontal * vertical
+
+
 def main() -> None:
     """Main Logic"""
     with open(inputfile) as infile:
         commands = get_data_commands(infile.read())
 
     print("Part1: ", part1(commands))
+    print("Part2: ", part2(commands))

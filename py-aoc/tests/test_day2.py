@@ -23,3 +23,10 @@ def test_part1() -> None:
     commands = day2.get_data_commands(EXAMPLE_DATA)
 
     assert day2.part1(commands) == 150
+
+
+def test_part2() -> None:
+    """Test part2"""
+    commands = day2.get_data_commands(EXAMPLE_DATA)
+
+    assert day2.part2(commands) == 900
