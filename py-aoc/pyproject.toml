@@ -7,7 +7,7 @@ authors = ["Justin Wood <Callek@gmail.com>"]
 [tool.poetry.scripts]
 aoc = "py_aoc.main:main"
 aoc-1 = "py_aoc.day1:main"
-#aoc-2 = "py_aoc.day2:main"
+aoc-2 = "py_aoc.day2:main"
 #aoc-3 = "py_aoc.day3:main"
 #aoc-4 = "py_aoc.day4:main"
 #aoc-5 = "py_aoc.day5:main"
