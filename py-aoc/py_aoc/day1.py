@@ -1,5 +1,4 @@
 """day1 module"""
-from itertools import permutations
 import os
 
 from typing import List
@@ -16,6 +15,7 @@ def get_data_depths(data: str) -> List[int]:
 
 
 def part1(depths: List[int]) -> int:
+    """Part1"""
     count = 0
     previous = None
     for current in depths:
@@ -29,6 +29,7 @@ def part1(depths: List[int]) -> int:
 
 
 def part2(depths: List[int]) -> int:
+    """Part2"""
     min_slice = 0
     max_slice = 3
     count = 0
