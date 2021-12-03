@@ -29,3 +29,9 @@ def test_part1() -> None:
     """Test part 1"""
     diag_report = day3.get_diag_report(EXAMPLE_DATA)
     assert day3.part1(diag_report) == 198
+
+
+def test_part2() -> None:
+    """Test part 2"""
+    diag_report = day3.get_diag_report(EXAMPLE_DATA)
+    assert day3.part2(diag_report) == 230
