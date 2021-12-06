@@ -84,3 +84,10 @@ def test_part1() -> None:
     calls, cards = day4.get_calls_and_cards(EXAMPLE_DATA)
     magic_num = day4.part1(calls, cards)
     assert magic_num == 4512
+
+
+def test_part2() -> None:
+    """Test part 2"""
+    calls, cards = day4.get_calls_and_cards(EXAMPLE_DATA)
+    magic_num = day4.part2(calls, cards)
+    assert magic_num == 1924

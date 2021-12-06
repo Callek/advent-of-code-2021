@@ -107,10 +107,27 @@ def part1(calls: List[int], cards: List[Card]) -> int:
     return 0
 
 
+def part2(calls: List[int], cards: List[Card]) -> int:
+    """Part 2"""
+    still_to_win = cards[:]
+    for call in calls:
+        call_number(call, still_to_win)
+        if not any(card.is_winner() for card in still_to_win):
+            continue
+        if len(still_to_win) > 1:
+            for card in still_to_win[:]:
+                if card.is_winner():
+                    still_to_win.remove(card)
+
+        if len(still_to_win) == 1 and still_to_win[0].is_winner():
+            return call * sum(still_to_win[0].unmarked_numbers())
+    return 0
+
+
 def main() -> None:
     """Main Logic"""
     with open(inputfile) as infile:
         calls, cards = get_calls_and_cards(infile.read())
 
     print("Part 1:", part1(calls, cards))
-    # print("Part 2:", part2(diag_report))
+    print("Part 2:", part2(calls, cards))
