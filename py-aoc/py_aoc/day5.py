@@ -1,4 +1,4 @@
-"""day4 module"""
+"""day5 module"""
 import os
 
 from typing import Any, List
@@ -71,17 +71,26 @@ class Line:
 
         Assumes horizontal/vertical"""
         walking = []
-        step = 1
-        if self.start.x == self.end.x:
-            if self.start.y > self.end.y:
-                step = -1
-            for y_walk in range(self.start.y, self.end.y + step, step):
-                walking.append(Point(self.start.x, y_walk))
-        if self.start.y == self.end.y:
-            if self.start.x > self.end.x:
-                step = -1
-            for x_walk in range(self.start.x, self.end.x + step, step):
-                walking.append(Point(x_walk, self.start.y))
+        step_x = 0
+        step_y = 0
+        if self.start.x > self.end.x:
+            step_x = -1
+        if self.start.x < self.end.x:
+            step_x = 1
+        if self.start.y > self.end.y:
+            step_y = -1
+        if self.start.y < self.end.y:
+            step_y = 1
+        if not step_y == 0:
+            y_walk = list(range(self.start.y, self.end.y + step_y, step_y))
+        if not step_x == 0:
+            x_walk = list(range(self.start.x, self.end.x + step_x, step_x))
+        if step_x == 0:
+            x_walk = [self.start.x] * len(y_walk)
+        if step_y == 0:
+            y_walk = [self.start.y] * len(x_walk)
+        for x, y in zip(x_walk, y_walk):
+            walking.append(Point(x, y))
         return walking
 
     def __eq__(self, other: Any) -> bool:
@@ -117,10 +126,24 @@ def part1(lines: List[Line]) -> int:
     return total
 
 
+def part2(lines: List[Line]) -> int:
+    """Compute Part 2"""
+    max_x = max(line.max_x() for line in lines)
+    max_y = max(line.max_y() for line in lines)
+    grid = [[0 for _ in range(max_x + 1)] for _ in range(max_y + 1)]
+
+    # Mark the grid
+    for line in lines:
+        for point in line.walk():
+            grid[point.y][point.x] += 1
+    total = sum(sum(coord >= 2 for coord in l) for l in grid)
+    return total
+
+
 def main() -> None:
     """Main Logic"""
     with open(inputfile) as infile:
         lines = get_lines(infile.read())
 
     print("Part 1:", part1(lines))
-    # print("Part 2:", part2(calls, cards))
+    print("Part 2:", part2(lines))

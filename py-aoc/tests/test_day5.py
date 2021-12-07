@@ -56,3 +56,9 @@ def test_part1() -> None:
     """Test part 1"""
     lines = day5.get_lines(EXAMPLE_DATA)
     assert day5.part1(lines) == 5
+
+
+def test_part2() -> None:
+    """Test part 2"""
+    lines = day5.get_lines(EXAMPLE_DATA)
+    assert day5.part2(lines) == 12
