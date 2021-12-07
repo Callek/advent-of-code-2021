@@ -13,9 +13,10 @@ EXAMPLE_DATA = """3,4,3,1,2
     (
         [18, 26],
         [80, 5934],
+        [256, 26984457539],
     ),
 )
-def test_part1(days: int, expect: int) -> None:
+def test_spawn(days: int, expect: int) -> None:
     """Test point data"""
     data = day6.get_initial_fish_age(EXAMPLE_DATA)
-    assert day6.part1(data, days) == expect
+    assert day6.spawn(data, days) == expect

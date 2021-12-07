@@ -14,8 +14,8 @@ def get_initial_fish_age(data: str) -> List[int]:
     return [int(age) for age in data.split(",")]
 
 
-def part1(fish_ages: List[int], days: int = 80) -> int:
-    """Part 1"""
+def spawn(fish_ages: List[int], days: int) -> int:
+    """Spawn"""
     MAX_AGE = 8
     NEW_SPAWN_AGE = 8
     SPAWN_RESET_AGE = 6
@@ -38,4 +38,5 @@ def main() -> None:
     with open(inputfile) as infile:
         ages = get_initial_fish_age(infile.read())
 
-    print("Part 1:", part1(ages))
+    print("Part 1:", spawn(ages, 80))
+    print("Part 2:", spawn(ages, 256))
