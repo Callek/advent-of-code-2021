@@ -10,3 +10,9 @@ def test_part1() -> None:
     """Test point data"""
     data = day7.get_crab_pos(EXAMPLE_DATA)
     assert day7.part1(data) == 37
+
+
+def test_part2() -> None:
+    """Test point data"""
+    data = day7.get_crab_pos(EXAMPLE_DATA)
+    assert day7.part2(data) == 168
