@@ -1,4 +1,5 @@
 """day8 module"""
+import math
 import os
 
 from typing import Dict, List
@@ -29,6 +30,48 @@ class Display:
         self.number_map[7] = next(d for d in self.display_raw if len(d) == 3)
         self.number_map[4] = next(d for d in self.display_raw if len(d) == 4)
         self.number_map[8] = next(d for d in self.display_raw if len(d) == 7)
+        self.number_map[6] = next(
+            d
+            for d in self.display_raw
+            if len(d) == 6 and not set(d).issuperset(set(self.number_map[7]))
+        )
+        top_right_seg = "".join(
+            set(self.number_map[7]).difference(set(self.number_map[6]))
+        )
+        bottom_right_seg = "".join(
+            set(self.number_map[1]).difference(set(top_right_seg))
+        )
+        self.number_map[5] = next(
+            d for d in self.display_raw if len(d) == 5 and top_right_seg not in d
+        )
+        self.number_map[2] = next(
+            d for d in self.display_raw if bottom_right_seg not in d
+        )
+        bottom_left_seg = "".join(set(self.number_map[6]) - set(self.number_map[5]))
+        self.number_map[3] = "".join(
+            d
+            for d in self.display_raw
+            if len(d) == 5 and d not in self.number_map.values()
+        )
+        self.number_map[0] = "".join(
+            d
+            for d in self.display_raw
+            if len(d) == 6
+            and d not in self.number_map.values()
+            and bottom_left_seg in d
+        )
+        self.number_map[9] = "".join(
+            d for d in self.display_raw if d not in self.number_map.values()
+        )
+
+    def get_number_by_value(self, value: str) -> int:
+        return next(k for k, v in self.number_map.items() if v == value)
+
+    def get_output_number(self) -> int:
+        num = 0
+        for i, d in enumerate(self.output_raw):
+            num += self.get_number_by_value(d) * int(math.pow(10, 3 - i))
+        return num
 
 
 def get_display_data(data: str) -> List[Display]:
@@ -48,10 +91,15 @@ def part1(displays: List[Display]) -> int:
     return total
 
 
+def part2(displays: List[Display]) -> int:
+    """Part 2"""
+    return sum(d.get_output_number() for d in displays)
+
+
 def main() -> None:
     """Main Logic"""
     with open(inputfile) as infile:
         displays = get_display_data(infile.read())
 
     print("Part 1:", part1(displays))
-    # print("Part 2:", part2(positions))
+    print("Part 2:", part2(displays))

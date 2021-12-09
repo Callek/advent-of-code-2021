@@ -36,6 +36,12 @@ def test_display_data() -> None:
 
 
 def test_part1() -> None:
-    """Test point data"""
+    """Test Part 1"""
     data = day8.get_display_data(EXAMPLE_DATA)
     assert day8.part1(data) == 26
+
+
+def test_part2() -> None:
+    """Test Part 2"""
+    data = day8.get_display_data(EXAMPLE_DATA)
+    assert day8.part2(data) == 61229
