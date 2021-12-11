@@ -23,7 +23,7 @@ def test_part1() -> None:
     assert day9.part1(data) == 15
 
 
-# def test_part2() -> None:
-#    """Test Part 2"""
-#    data = day8.get_display_data(EXAMPLE_DATA)
-#    assert day8.part2(data) == 61229
+def test_part2() -> None:
+    """Test Part 2"""
+    data = day9.get_heightmap(EXAMPLE_DATA)
+    assert day9.part2(data) == 1134
