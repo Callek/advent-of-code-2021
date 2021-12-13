@@ -56,3 +56,17 @@ def test_part1(data: str, expect: int) -> None:
     """Test part 1"""
     segments = day12.get_path_segments(data)
     assert day12.part1(segments) == expect
+
+
+@mark.parametrize(
+    "data,expect",
+    (
+        [EXAMPLE_DATA[0], 36],
+        [EXAMPLE_DATA[1], 103],
+        [EXAMPLE_DATA[2], 3509],
+    ),
+)
+def test_part2(data: str, expect: int) -> None:
+    """Test part 2"""
+    segments = day12.get_path_segments(data)
+    assert day12.part2(segments) == expect

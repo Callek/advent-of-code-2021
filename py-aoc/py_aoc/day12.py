@@ -22,7 +22,7 @@ def get_path_segments(data: str) -> Dict[str, List[str]]:
 
 
 def count_paths(
-    all_segments: Dict[str, List[str]], node: str, current_path: List[str]
+    all_segments: Dict[str, List[str]], node: str, current_path: List[str], twice: bool
 ) -> Generator[int, None, None]:
     """Count all possible paths from node to 'end'"""
     current_path.append(node)
@@ -30,13 +30,20 @@ def count_paths(
         if n == "end":
             yield 1
         elif n.isupper() or n not in current_path:
-            yield from count_paths(all_segments, n, current_path)
+            yield from count_paths(all_segments, n, current_path, twice)
+        elif twice and n != "start":
+            yield from count_paths(all_segments, n, current_path, False)
     current_path.pop()
 
 
 def part1(segments: Dict[str, List[str]]) -> int:
     """Part 1"""
-    return sum(count_paths(segments, "start", []))
+    return sum(count_paths(segments, "start", [], False))
+
+
+def part2(segments: Dict[str, List[str]]) -> int:
+    """Part 2"""
+    return sum(count_paths(segments, "start", [], True))
 
 
 def main() -> None:
@@ -45,4 +52,4 @@ def main() -> None:
         segments = get_path_segments(infile.read())
 
     print("Part 1:", part1(segments.copy()))
-    # print("Part 2:", part2(grid.copy()))
+    print("Part 2:", part2(segments.copy()))
