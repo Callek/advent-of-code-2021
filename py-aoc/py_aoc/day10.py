@@ -40,7 +40,7 @@ def part1(nav: List[str]) -> int:
     return error_score
 
 
-def tokenize_expected_closing(nav_sequence: List[str]) -> List[str]:
+def tokenize_expected_closing(nav_sequence: str) -> List[str]:
     """Calculate the closing token list for Part 2"""
     OPEN_MAP = ("(", "{", "[", "<")
     CLOSING_MAP = (")", "}", "]", ">")
@@ -68,7 +68,7 @@ def part2(nav: List[str]) -> int:
             line_score += COMPLETION_SCORE[tokens.pop()]
         total_scores.append(line_score)
 
-    return statistics.median(total_scores)
+    return int(statistics.median(total_scores))
 
 
 def main() -> None:
