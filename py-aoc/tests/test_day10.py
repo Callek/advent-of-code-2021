@@ -26,3 +26,9 @@ def test_part1() -> None:
     """Test Part 1"""
     data = day10.get_nav_data(EXAMPLE_DATA)
     assert day10.part1(data) == 26397
+
+
+def test_part2() -> None:
+    """Test Part 2"""
+    data = day10.get_nav_data(EXAMPLE_DATA)
+    assert day10.part2(data) == 288957

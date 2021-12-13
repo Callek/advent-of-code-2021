@@ -15,6 +15,7 @@ aoc-6 = "py_aoc.day6:main"
 aoc-7 = "py_aoc.day7:main"
 aoc-8 = "py_aoc.day8:main"
 aoc-9 = "py_aoc.day9:main"
+aoc-10 = "py_aoc.day10:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
