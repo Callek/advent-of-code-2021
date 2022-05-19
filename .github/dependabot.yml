@@ -1,0 +1,8 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/py-aoc"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 20
+
