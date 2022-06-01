@@ -28,7 +28,7 @@ python = "^3.8"
 pylint = "^2.12.1"
 black = { git = "https://github.com/psf/black.git", branch = "main" }
 mypy = "^0.960"
-pytest = "^6.2.5"
+pytest = "^7.1.2"
 tox = "^3.24.4"
 
 [build-system]
