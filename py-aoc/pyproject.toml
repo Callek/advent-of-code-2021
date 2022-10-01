@@ -25,7 +25,7 @@ aoc-14 = "py_aoc.day14:main"
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
-pylint = "^2.14.4"
+pylint = "^2.15.3"
 black = { git = "https://github.com/psf/black.git", branch = "main" }
 mypy = "^0.961"
 pytest = "^7.1.2"
